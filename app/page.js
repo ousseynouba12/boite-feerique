@@ -4,10 +4,15 @@ import Boite from './Boite'
 export const dynamic = 'force-dynamic' // toujours relire le tableau
 
 export default async function Home() {
-  const { data } = await db()
-    .from('lettres')
-    .select('id,titre,date_lettre,ouverte_le')
-    .order('date_lettre', { ascending: false })
+const { data, error } = await db()
+  .from('lettres')
+  .select('id,titre,date_lettre,ouverte_le')
+  .order('date_lettre', { ascending: false })
+
+if (error) {
+  console.error('Erreur Supabase — chargement des lettres :', error)
+  throw new Error('Impossible de charger les lettres.')
+}
   return (
     <main>
       <header>
