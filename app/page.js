@@ -28,10 +28,6 @@ export default async function Home() {
         <p>Des mots doux, scellés rien que pour moi</p>
         <div className="deco">✦ ✧ ✦</div>
       </header>
-      <p className="note">
-        DIAGNOSTIC · clé : {typeCle()} · lignes : {String(r.count)} · statut : {r.status} · erreur :{' '}
-        {r.error ? r.error.message : 'aucune'}
-      </p>
       <Boite initial={r.data || []} />
     </main>
   )
